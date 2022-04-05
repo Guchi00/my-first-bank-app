@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node dist/server.js",
+    "start": "node bin/www",
     "build": "npx tsc --project ./ && npm run move:static",
     "move:static": "cp -r public dist && cp -r views dist",
     "dev": "nodemon --watch './**/*.ts' --exec 'ts-node' src/server.ts"

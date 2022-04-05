@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 
 import router from './routers';
+import { initializeDB } from './database';
 
 const app = express();
 
@@ -18,6 +19,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '..', 'public')));
 app.use('/api/v1', router);
+
+
+app.use('/', (req: express.Request, res: express.Response) => {
+  res.render('index', { title: 'Bank App' });
+});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -39,5 +45,7 @@ app.use(function (
   res.status(err.status || 500);
   res.render('error');
 });
+
+initializeDB();
 
 export default app;
