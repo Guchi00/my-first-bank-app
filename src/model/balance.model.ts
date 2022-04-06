@@ -3,20 +3,23 @@ import { Balance } from '../types';
 
 const TABLE_NAME = 'balances';
 
+//get only balance from the table, read it and return it
 export const getAccounts = (): Balance[]  => {
   const accounts = readTable(TABLE_NAME) as Balance[];
+  // console.log(accounts)
   return accounts; // return db data parsed as JSON //when there's already something in the database from creating a post
 };
 
+//create an account from the balance table
 export const getAccount = (accountNumber: number): Balance | undefined => {
   const accounts = getAccounts();
-  const account = accounts.find(b => b.account === accountNumber);
+  const account = accounts.find(b => b.account === accountNumber);   //dont understand this line
   return account;
 };
 
 export const accountExists = (accountNumber: number): boolean => {
   const accounts = getAccounts();
-  const index = accounts.findIndex(b => b.account === accountNumber);
+  const index = accounts.findIndex(b => b.account === accountNumber);   //same here
   return index !== -1;
 }
 

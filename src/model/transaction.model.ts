@@ -10,7 +10,7 @@ export const sendMoney = (from: number, to: number, amount: number, description:
     : `Transfer from ${from} to ${to}`;
 
   const newTransaction: Transaction = {
-    reference: generateReference(),
+    reference: generateReference(),        //what does this generateReference mean
     senderAccount: from,
     receiverAccount: to,
     amount,
